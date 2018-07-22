@@ -20,8 +20,9 @@ namespace HelloWorld.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        static string _connectionString = System.Environment.GetEnvironmentVariable("APPSETTING_DefaultConnection");
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base(_connectionString, throwIfV1Schema: false)
         {
         }
 
